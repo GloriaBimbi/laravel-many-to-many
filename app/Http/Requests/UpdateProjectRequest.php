@@ -28,6 +28,8 @@ class UpdateProjectRequest extends FormRequest
             'content' => 'required|string',
             //mi accerto che il type_id esista nella tabella types, nella colonna id
             'type_id' => 'required|exists:types,id',
+            //controllo che la technology che arriva dal form sia contenuto nella tabella delle technologies per essere valido
+            'technologies' => 'exists:technologies,id',
         ];
     }
 

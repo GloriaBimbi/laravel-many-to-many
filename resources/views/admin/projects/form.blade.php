@@ -41,11 +41,23 @@
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
-            <div class="mb-3 col-12">
+            <div class="mb-3 col-8">
               <label for="content" class="form-label">Content</label>
               <br>
-              <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" cols="105" rows="3">{{ old('content', $project->content) }}</textarea>
+              <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="13">{{ old('content', $project->content) }}</textarea>
               @error('content')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+            <div class="mb-3 col-4">
+              <div class="@error('technologies') is-invalid @enderror">
+                @foreach($technologies as $technology)
+                  <input {{ in_array($technology->id, old('technologies', $project->technologies->pluck('id')->toArray())) ? 'checked' : '' }} type="checkbox" name="technologies[]" id="technologies-{{ $technology->id }}" class="form-check-input @error('technologies') is-invalid @enderror" value="{{ $technology->id }}">
+                  <label for="technologies-{{ $technology->id }}" class="form-check-label @error('technologies') is-invalid @enderror">{{ $technology->label }}</label>
+                  <br>
+                @endforeach
+              </div>
+              @error('technologies')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>

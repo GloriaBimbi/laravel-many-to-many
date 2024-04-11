@@ -11,6 +11,7 @@
         <h1 class="mt-5">{{ $project->title }}</h1>
         <div class="mb-5"><b>Slug:</b> {{ $project->slug }}</div>
         <div class="mb-5"><b>Type:</b> {!! $project->type->getBedge() !!}</div>
+        <div class="mb-5"><b>Technology:</b> {{ $project->getTechnologiesToText() }}</div>
 
 
         <p>{{ $project->content }}</p>

@@ -14,8 +14,8 @@
                 <tr>
                     <th>Title</th>
                     <th>Type</th>
+                    <th>Technology</th>
                     <th>Abstract</th>
-                    <th>Slug</th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,8 +24,8 @@
                 <tr>
                     <td>{{$project->title}}</td>
                     <td>{!! $project->type->getBedge() !!}</td>
+                    <td>{{ $project->getTechnologiesToText() }}</td>
                     <td>{{$project->getAbstract(100)}}</td>
-                    <td>{{$project->slug}}</td>
                     <td>
                         <a href="{{ route('admin.project.show', $project) }}" class="btn btn-primary my-1 px-5"><i class="fa-solid fa-eye"></i></a>
                         <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning my-1 px-5"><i class="fa-solid fa-pencil"></i></a>
