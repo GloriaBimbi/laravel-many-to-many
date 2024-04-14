@@ -7,14 +7,27 @@
     <div class="container">
         <a class="btn btn-primary mt-5" href="{{ route('admin.project.index') }}">Go back to Projects' List</a>
 
-        
         <h1 class="mt-5">{{ $project->title }}</h1>
         <div class="mb-5"><b>Slug:</b> {{ $project->slug }}</div>
-        <div class="mb-5"><b>Type:</b> {!! $project->type->getBedge() !!}</div>
-        <div class="mb-5"><b>Technology:</b> {{ $project->getTechnologiesToText() }}</div>
+        <div class="row">
+          <div class="col-6">
+            <div class="mb-5"><b>Type:</b> {!! $project->type->getBedge() !!}</div>
+            <div class="mb-5"><b>Technology:</b> {{ $project->getTechnologiesToText() }}</div>
+            <p>{{ $project->content }}</p>
+          </div>
+          <div class="col-6">
+            {{-- visualizzo l'immagine solo nel caso in cui ci sia --}}
+            @if(!empty($project->image))
+              <img src=" {{ asset('storage/' . $project->image) }} " alt="posted image" style="width: 400px">
+            @endif
+          </div>
+        </div>
+        
+        
 
 
-        <p>{{ $project->content }}</p>
+
+
 
         <div class="d-flex gap-5 my-5">
             <a class="btn btn-warning" href="{{ route('admin.project.edit', $project) }}"><i class="fa-solid fa-pencil"></i> Edit <i>"{{ $project->title }}"</i> Project </a>

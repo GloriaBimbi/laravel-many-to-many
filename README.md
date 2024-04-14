@@ -1,9 +1,7 @@
 ## CONSEGNA DAY 1
 
-```
 Creiamo con Laravel il nostro sistema di gestione del nostro Portfolio di progetti.
 Oggi iniziamo un nuovo progetto che si arricchirà nel corso delle prossime lezioni: man mano aggiungeremo funzionalità e vedremo la nostra applicazione crescere ed evolvere.
-```
 
 Iniziamo con il definire il layout, modello, migrazione, controller e rotte necessarie per il sistema portfolio:
 
@@ -54,3 +52,16 @@ Creare il seeder per il model Technology.
 ### Bonus 2:
 
 Aggiungere le operazioni CRUD per il model Technology, in modo da gestire le tecnologie utilizzate nei progetti direttamente dal pannello di amministrazione.
+
+## CONSEGNA DAY 4
+
+Aggiungiamo un'immagine ai nostri progetti.
+Ricordiamoci di creare il symlink con l'apposito comando artisan e di aggiungere l'attributo enctype="multipart/form-data" ai form di creazione e di modifica!
+
+### Bonus
+
+Inviare una email quando viene creato un nuovo post
+
+### Bonus 2
+
+Permettere l'eliminazione dell'immagine del post dal form di modifica

@@ -17,7 +17,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ empty($project->id) ? route('admin.project.store') : route('admin.project.update', $project) }}" method="POST" class="mb-5 row g-3">
+        <form action="{{ empty($project->id) ? route('admin.project.store') : route('admin.project.update', $project) }}" method="POST" class="mb-5 row g-3" enctype="multipart/form-data">
             @csrf
             @unless(empty($project->id))
                 @method('PATCH')
@@ -60,6 +60,10 @@
               @error('technologies')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
+            </div>
+            <div class="mb-3 col-12">
+              <label for="image" class="form-label">Image Post</label>
+              <input type="file" name="image" id="image" class="form-control">
             </div>
             <div class="mb-3 col-4">
                 <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk me-1"></i>{{ empty($project->id) ? 'Save' : 'Edit' }}</button>

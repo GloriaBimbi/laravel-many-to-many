@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Models\Type;
 // use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -54,6 +55,12 @@ class ProjectController extends Controller
         $project = new Project;
         $project->fill($data);
         $project->slug = Str::slug($project->title);
+
+        //creo una colonna per salvare il path dell'immagine nel db
+        if(Arr::exists($data, 'image')){
+            $img_path = Storage::put('uploads/posts', $data['image']); 
+            $project->image = $img_path;
+        }  
         $project->save();
 
         //faccio l'attach per collegare i valori indicati dallo user nella checkbox del form dei project, con la tabella
@@ -72,6 +79,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         return view('admin.projects.show', compact('project'));
     }
 
